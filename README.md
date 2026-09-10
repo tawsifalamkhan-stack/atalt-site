@@ -1,43 +1,38 @@
 # ATALT — all things altered
 
-**ATA — 001 · Chapter One**  
+**ATA — 001 · Chapter One**
 FR · 25.09.26 · Outskirts of Dhaka · starts 15:00 · ends 00:50
 
-Single-page event site. No build step, no dependencies, no external assets.
+Static site. No build step, no dependencies, no framework.
 
 ## Structure
 
-    index.html    the entire site
-
-One file. HTML, CSS and JS are inline. All ten images — six artist
-portraits, the ATALT sigil, the Live the Moment mark and the Funktion-One
-mark — are embedded as base64 data URIs, so the page has no asset
-directory and cannot break from a missing file. Roughly 1.3 MB, of which
-1.24 MB is imagery and 42 KB is markup.
-
-Only external calls: Google Fonts (Inter, IBM Plex Mono) and one
-SoundCloud iframe on the AAYNA panel.
+    index.html          markup only
+    css/atalt.css       design system + the spring easings
+    js/atalt.js         displacement engine, accordion, countdown
+    assets/*.webp       artist portraits and partner marks
+    netlify.toml        publish config and cache headers
 
 ## Deploy
 
-Any static host. Drop `index.html` at the web root.
-Netlify project: https://atalt-ata-001.netlify.app
+Netlify builds from `main` on every push. No build command; publish directory
+is the repo root. Markup is served with `must-revalidate`, assets are
+immutable, so edits appear immediately while images stay cached.
 
 ## Brand
 
 Warm monochrome only (`#0A0A0A` ink / `#F5F3ED` off-white / `#EBE7DA` cream).
-No pure black or white. No accent colour — the one exception is the Live the
+No pure black or white. No accent colour — the sole exception is the Live the
 Moment partner mark, which appears in its own colours by agreement.
 The altering line is the only horizontal gesture: asymmetric, longer right.
-No glitch, RGB-split or scan-line filters; the distortion is structural,
-cut into the marks, names and headlines themselves.
+No glitch, RGB-split or scan-line filters. Distortion is structural — cut into
+the marks, names and headlines, and driven by scroll, drag, cursor and the
+countdown through one spring system in `js/atalt.js`.
 
 ## Open items
 
-- Gate time: hero says 15:00, the countdown targets 14:30 — reconcile.
-- Tikt!k! bio and links.
-- shadYman Instagram and SoundCloud. OMDG and The Brown Testament Instagram.
+- Quicket still lists 14:30; this site says 15:00. Reconcile.
+- Tikt!k! bio. shadYman, OMDG and The Brown Testament Instagram confirmed;
+  Tikt!k! SoundCloud outstanding.
 - Confirm which portrait belongs to which artist before any is captioned.
-- Second paragraph of each artist bio describes their expected direction
-  for Chapter 01; confirm with each artist before this is public.
 - Running order not yet fixed.
