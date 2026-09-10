@@ -1,0 +1,18 @@
+# ATALT — ATA — 001
+# Static site. No build step: index.html and assets/ are served as they are.
+
+[build]
+  publish = "."
+  command = ""
+
+# Images never change once uploaded — cache them hard.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Markup changes often — never cache it, so edits appear immediately.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
