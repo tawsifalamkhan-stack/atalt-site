@@ -28,7 +28,7 @@ const ENGINE = !reduce && (()=>{
     const add=(sel,gain)=>document.querySelectorAll(sel).forEach(el=>nodes.push({el,gain,x:0,v:0}));
     add('.hero .wm-big .low',1.5);
     add('.split .b',1.0);
-    add('.name .n .nb',0.85);
+    add('.name .n .nb',0.30);
     add('.cut .lo',1.25);
   }
   build();
