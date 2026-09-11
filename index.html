@@ -355,8 +355,7 @@
 </main>
 
 <div class="sticky" id="sticky">
-  <!-- Quicket Ticket Widget: renders its own button in place -->
-  <div class="quicket-slot" data-quicket-event="atalt-001" data-quicket-label="Buy tickets" data-quicket-color="#F23F39"></div>
+  <a class="btn" id="buy-tickets-btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span>Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
 </div>
 
 
@@ -365,6 +364,19 @@
 
 <!-- Quicket Ticket Widget -->
 <script src="https://quicket.me/widget.js"></script>
+<script>
+  // Keep the site's own button design; open the widget modal on click instead
+  // of the default auto-rendered button. Falls back to the real link
+  // (target="_blank" to quicket.me) if widget.js fails to load for any reason.
+  (function () {
+    var btn = document.getElementById('buy-tickets-btn');
+    if (!btn || !window.QuicketWidget) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.QuicketWidget.open('atalt-001', { color: '#F23F39' });
+    });
+  })();
+</script>
 
 <!-- Quicket Chat Widget -->
 <script src="https://quicket.me/chat-widget.js"

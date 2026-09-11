@@ -231,12 +231,7 @@ p.body+p.body{margin-top:1.25em}
   background:linear-gradient(to top,var(--ink) 55%,rgba(10,10,10,0));display:flex;justify-content:flex-end;pointer-events:none}
 .btn .wm-btn{width:64px;height:auto;flex:none;color:currentColor}
 .sticky .btn{pointer-events:auto;white-space:nowrap;background:var(--ink);max-width:none;width:auto;min-width:min(100%,360px)}
-/* .sticky sets pointer-events:none on itself so page content behind the gradient
-   stays clickable; the Quicket widget script injects its own <button> into this
-   slot, so the slot needs its own pointer-events:auto or that button inherits
-   "none" and silently stops responding to clicks. */
-.sticky .quicket-slot{pointer-events:auto}
-@media (max-width:760px){.sticky{justify-content:stretch}.sticky .btn{width:100%}.sticky .quicket-slot,.sticky .quicket-slot button{width:100%}}
+@media (max-width:760px){.sticky{justify-content:stretch}.sticky .btn{width:100%}}
 body{padding-bottom:88px}
 main>section:last-child{padding-bottom:clamp(96px,14vh,160px)}
 
