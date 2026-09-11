@@ -355,11 +355,23 @@
 </main>
 
 <div class="sticky" id="sticky">
-  <a class="btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span>Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
+  <!-- Quicket Ticket Widget: renders its own button in place -->
+  <div class="quicket-slot" data-quicket-event="atalt-001" data-quicket-label="Buy tickets" data-quicket-color="#F23F39"></div>
 </div>
 
 
 
 <script src="js/atalt.js" defer></script>
+
+<!-- Quicket Ticket Widget -->
+<script src="https://quicket.me/widget.js"></script>
+
+<!-- Quicket Chat Widget -->
+<script src="https://quicket.me/chat-widget.js"
+        data-quiket-org="atalt"
+        data-quiket-key="qkt_pub_lqc-djtlTvhFUJz1He9SFRsd"
+        data-quiket-color="#1A1A1A"
+        data-quiket-theme="light"
+        data-quiket-position="bottom-right"></script>
 </body>
 </html>
