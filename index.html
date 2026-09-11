@@ -355,7 +355,7 @@
 </main>
 
 <div class="sticky" id="sticky">
-  <a class="btn" id="buy-tickets-btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span>Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
+  <a class="btn" id="buy-tickets-btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span id="buy-tickets-label">Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
 </div>
 
 
@@ -375,6 +375,15 @@
       e.preventDefault();
       window.QuicketWidget.open('atalt-001', { color: '#F23F39' });
     });
+
+    // Visitor arrived via the emailed ?qkt-access-token=... link (or already
+    // held a grant from earlier this session) and is approved to buy -- no
+    // point asking them to "Request access" again.
+    window.addEventListener('quicket:whitelist-verified', function (e) {
+      if (e.detail && e.detail.slug && e.detail.slug !== 'atalt-001') return;
+      var label = document.getElementById('buy-tickets-label');
+      if (label) label.textContent = 'Buy tickets';
+    });
   })();
 </script>
 
@@ -384,6 +393,6 @@
         data-quiket-key="qkt_pub_lqc-djtlTvhFUJz1He9SFRsd"
         data-quiket-color="#1A1A1A"
         data-quiket-theme="light"
-        data-quiket-position="bottom-right"></script>
+        data-quiket-position="bottom-left"></script>
 </body>
 </html>
