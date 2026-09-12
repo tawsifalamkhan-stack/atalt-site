@@ -389,10 +389,50 @@
   </div>
 </div>
 
-<div class="sticky" id="sticky">
-  <a class="btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span>Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
+<!-- data-quicket-widget-launcher: not a Quicket auto-render slot (this button
+     keeps its own design, wired manually below) -- purely a marker so the
+     chat widget's own collision-avoidance can detect this bar and lift its
+     launcher above it instead of overlapping it on mobile, where this bar
+     runs full-width along the same bottom edge. -->
+<div class="sticky" id="sticky" data-quicket-widget-launcher>
+  <a class="btn" id="buy-tickets-btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span id="buy-tickets-label">Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
 </div>
 
+
+
 <script src="js/atalt.js" defer></script>
+
+<!-- Quicket Ticket Widget -->
+<script src="https://quicket.me/widget.js"></script>
+<script>
+  // Keep the site's own button design; open the widget modal on click instead
+  // of the default auto-rendered button. Falls back to the real link
+  // (target="_blank" to quicket.me) if widget.js fails to load for any reason.
+  (function () {
+    var btn = document.getElementById('buy-tickets-btn');
+    if (!btn || !window.QuicketWidget) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.QuicketWidget.open('atalt-001', { color: '#F23F39' });
+    });
+
+    // Visitor arrived via the emailed ?qkt-access-token=... link (or already
+    // held a grant from earlier this session) and is approved to buy -- no
+    // point asking them to "Request access" again.
+    window.addEventListener('quicket:whitelist-verified', function (e) {
+      if (e.detail && e.detail.slug && e.detail.slug !== 'atalt-001') return;
+      var label = document.getElementById('buy-tickets-label');
+      if (label) label.textContent = 'Buy tickets';
+    });
+  })();
+</script>
+
+<!-- Quicket Chat Widget -->
+<script src="https://quicket.me/chat-widget.js"
+        data-quiket-org="atalt"
+        data-quiket-key="qkt_pub_lqc-djtlTvhFUJz1He9SFRsd"
+        data-quiket-color="#1A1A1A"
+        data-quiket-theme="light"
+        data-quiket-position="bottom-left"></script>
 </body>
 </html>
