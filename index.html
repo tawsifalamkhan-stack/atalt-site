@@ -54,6 +54,7 @@
     <li><a href="#rules">Rules</a></li>
     <li><a href="#dress">Dress</a></li>
     <li><a href="#access">Access</a></li>
+    <li><a href="#" data-admin>Administration</a></li>
   </ul>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
 </nav>
@@ -65,6 +66,7 @@
   <a href="#rules">Rules</a>
   <a href="#dress">Dress</a>
   <a href="#access">Access</a>
+  <a href="#" id="adminLink" data-admin>Administration</a>
   <div class="meta mono muted"><span>ATA — 001</span><span>Dhaka · 2026</span></div>
 </div>
 
@@ -78,7 +80,7 @@
       <div class="mono lg date" data-fact="dateShort">FR · 25.09.26</div>
     </div>
     <div class="hero-marks">
-      <img class="sigil-big" src="assets/atalt-sigil.webp" alt="All Things Altered sigil" fetchpriority="high">
+      <div class="sigil-stack sigil-big"><img class="sg" src="assets/atalt-sigil.webp" alt="All Things Altered sigil" fetchpriority="high"><img class="sg sg-lo" src="assets/atalt-sigil.webp" alt="" aria-hidden="true"></div>
       <svg class="wm-big" viewBox="-10 -2 262 56" role="img" aria-label="ATALT"><g fill="currentColor"><rect x="10" y="0" width="20" height="10"/><rect x="0" y="10" width="10" height="10"/><rect x="30" y="10" width="10" height="10"/><rect x="0" y="20" width="40" height="10"/><rect x="50" y="0" width="40" height="10"/><rect x="60" y="10" width="20" height="20"/><rect x="110" y="0" width="20" height="10"/><rect x="100" y="10" width="10" height="10"/><rect x="130" y="10" width="10" height="10"/><rect x="100" y="20" width="40" height="10"/><rect x="150" y="0" width="20" height="30"/><rect x="200" y="0" width="40" height="10"/><rect x="210" y="10" width="20" height="20"/><g class="low"><rect x="0" y="30" width="10" height="20"/><rect x="30" y="30" width="10" height="20"/><rect x="60" y="30" width="20" height="20"/><rect x="100" y="30" width="10" height="20"/><rect x="130" y="30" width="10" height="20"/><rect x="150" y="30" width="20" height="10"/><rect x="150" y="40" width="40" height="10"/><rect x="210" y="30" width="20" height="20"/></g></g><line x1="-8" y1="30" x2="250" y2="30" stroke="currentColor" stroke-width="2.5"/></svg>
     </div>
     <div class="hero-foot mono">outskirts of dhaka <span class="muted">•</span> starts 15:00 <span class="muted">•</span> ends 00:50</div>
@@ -319,12 +321,13 @@
 
     <div class="count" id="count" aria-live="polite">
       <div class="mono muted">until the gate opens · <span data-fact="dateShort">FR · 25.09.26</span> · 15:00</div>
-      <div class="digits">
-        <div><span class="num" data-u="d">00</span><span class="mono muted">days</span></div>
-        <div><span class="num" data-u="h">00</span><span class="mono muted">hours</span></div>
-        <div><span class="num" data-u="m">00</span><span class="mono muted">minutes</span></div>
-        <div><span class="num" data-u="s">00</span><span class="mono muted">seconds</span></div>
+      <div class="line">
+        <span class="num" data-u="d">00</span><span class="unit">days</span>
+        <span class="num" data-u="h">00</span><span class="unit">hrs</span>
+        <span class="num" data-u="m">00</span><span class="unit">min</span>
+        <span class="num" data-u="s">00</span><span class="unit">sec</span>
       </div>
+    </div>
     </div>
 
     <div class="steps">
@@ -341,7 +344,6 @@
   </div>
 </section>
 
-
 <section class="partners" aria-label="Partners">
   <div class="wrap">
     <div class="hr"></div>
@@ -354,11 +356,42 @@
 </section>
 </main>
 
+<div class="admin" id="admin" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="admTitle">
+  <div class="admin-inner">
+    <button class="admin-close mono" id="admClose" aria-label="Close">Close</button>
+
+    <div class="adm-step" id="admGate">
+      <div class="mono muted">restricted</div>
+      <h2 class="adm-h" id="admTitle">Administration</h2>
+      <p class="adm-sub">Internal documents. Encrypted at rest. Not indexed, not linked publicly.</p>
+      <div class="adm-field">
+        <input type="password" id="admPw" class="mono" placeholder="PASSWORD" autocomplete="current-password" spellcheck="false">
+        <button class="btn adm-go" id="admGo"><span>Unlock</span></button>
+      </div>
+      <div class="adm-msg mono" id="admMsg" role="status"></div>
+    </div>
+
+    <div class="adm-step" id="admDash" hidden>
+      <div class="mono muted">administration</div>
+      <h2 class="adm-h">Internal documents</h2>
+      <div class="adm-docs">
+        <button class="adm-doc" data-doc="brand">
+          <span class="adm-doc-n">Brand guideline</span>
+          <span class="mono muted">visual design system · v1.0</span>
+        </button>
+        <button class="adm-doc" data-doc="brief">
+          <span class="adm-doc-n">Content brief</span>
+          <span class="mono muted">ATA — 001 · photo and release plan</span>
+        </button>
+      </div>
+      <div class="adm-msg mono" id="admMsg2" role="status"></div>
+    </div>
+  </div>
+</div>
+
 <div class="sticky" id="sticky">
   <a class="btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span>Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
 </div>
-
-
 
 <script src="js/atalt.js" defer></script>
 </body>
