@@ -354,7 +354,12 @@
 </section>
 </main>
 
-<div class="sticky" id="sticky">
+<!-- data-quicket-widget-launcher: not a Quicket auto-render slot (this button
+     keeps its own design, wired manually below) -- purely a marker so the
+     chat widget's own collision-avoidance can detect this bar and lift its
+     launcher above it instead of overlapping it on mobile, where this bar
+     runs full-width along the same bottom edge. -->
+<div class="sticky" id="sticky" data-quicket-widget-launcher>
   <a class="btn" id="buy-tickets-btn" href="https://quicket.me/events/atalt-001" target="_blank" rel="noopener"><span id="buy-tickets-label">Request access</span><svg class="wm-btn" viewBox="0 0 242 52" aria-label="ATALT" role="img"><use href="#wm-clean"/></svg></a>
 </div>
 
